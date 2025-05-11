@@ -1,12 +1,19 @@
 :root {
   --white: #fff;
   --gray-20: #f2f2f2;
+  --gray-30: #999999;
   --gray-60: #666666;
   --gray-80: #4d4d4d;
   --accent-primary: #3c7aae;
 
+  --blue-shadow: rgba(59, 130, 246, 0.3);
+  --blue-60: #3b82f6;
+  --blue-80: #2563eb;
+  --blue-100: #1d4ed8;
+
   --font-weight-normal: 1.1rem;
 
+  --space-smallest: 0.5rem;
   --space-small: 1rem;
 }
 

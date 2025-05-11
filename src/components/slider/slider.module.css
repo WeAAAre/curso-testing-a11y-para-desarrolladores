@@ -1,0 +1,111 @@
+:root {
+  --slider-background-color: var(--gray-30);
+  --slider-space-header: var(--space-smallest);
+  --slider-max-width: 25rem;
+  --slider-size: 0.4rem;
+  --slider-color: var(--blue-60);
+  --slider-color-accent: var(--blue-80);
+  --slider-dragging: var(--blue-100);
+  --slider-thumb-size: 1.25rem;
+  --slider-thumb-shadow: var(--blue-shadow);
+}
+
+.slider-root {
+  width: 100%;
+  max-width: var(--slider-max-width);
+
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--slider-space-header);
+  }
+
+  input[type='range'] {
+    appearance: none;
+    background-color: var(--slider-background-color);
+    width: 100%;
+    height: var(--slider-size);
+    --fill-percentage: 0;
+    background: linear-gradient(
+      to right,
+      var(--slider-color) var(--fill-percentage),
+      var(--slider-background-color) var(--fill-percentage)
+    );
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: var(--slider-thumb-size);
+      height: var(--slider-thumb-size);
+      border-radius: 50%;
+      background: var(--slider-color);
+      border: 2px solid var(--white);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+      margin-top: -7px; /* Centers the thumb on the track in Safari */
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--slider-color);
+      border: 2px solid var(--white);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+    }
+
+    /* Safari specific track styling */
+    &::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 3px;
+    }
+
+    &:focus {
+      outline: none;
+
+      &::-webkit-slider-thumb {
+        box-shadow: 0 0 0 3px var(--blue-shadow);
+      }
+
+      &::-moz-range-thumb {
+        box-shadow: 0 0 0 3px var(--blue-shadow);
+      }
+    }
+
+    /* Hover styles */
+    &:hover {
+      &::-webkit-slider-thumb {
+        background: var(--slider-color-accent);
+      }
+
+      &::-moz-range-thumb {
+        background: var(--slider-color-accent);
+      }
+    }
+
+    /* Active/dragging styles */
+    &.dragging {
+      &::-webkit-slider-thumb {
+        transform: scale(1.1);
+        background: var(--slider-dragging);
+      }
+
+      &::-moz-range-thumb {
+        transform: scale(1.1);
+        background: var(--slider-dragging);
+      }
+    }
+  }
+}
