@@ -34,7 +34,8 @@ export default [
       'react-hooks': reactHooks
     },
     rules: {
-      ...react.configs.recommended.rules
+      ...react.configs.recommended.rules,
+      'react/prop-types': 'off'
     }
   },
   prettierConfig,
