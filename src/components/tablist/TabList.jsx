@@ -1,10 +1,4 @@
-import React, {
-  Children,
-  cloneElement,
-  isValidElement,
-  useId,
-  useState,
-} from 'react';
+import React, { Children, cloneElement, isValidElement, useState } from 'react';
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';
 // eslint-disable-next-line no-unused-vars
@@ -50,7 +44,8 @@ export const TabList = ({ children }) => {
     if (newIndex >= tabPanels.length) newIndex = 0;
 
     setSelectedIndex(newIndex);
-    tabPanels.at(newIndex).props.originRef.current?.focus();
+    const newSelectedTabId = tabs.at(newIndex).props.id;
+    document.getElementById(newSelectedTabId).focus();
     event.preventDefault();
   };
   return (
@@ -58,7 +53,6 @@ export const TabList = ({ children }) => {
       <ul role="tablist" onKeyDown={handleKeyDown}>
         {tabs.map((tab, index) =>
           cloneElement(tab, {
-            id: useId(),
             onClick: () => setSelectedIndex(index),
             _selected: selectedIndex === index,
           }),
@@ -67,7 +61,6 @@ export const TabList = ({ children }) => {
 
       {tabPanels.map((tabPanel, index) =>
         cloneElement(tabPanel, {
-          id: useId(),
           _selected: selectedIndex === index,
         }),
       )}

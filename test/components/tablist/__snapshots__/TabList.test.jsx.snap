@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TabList > should match snapshot 1`] = `
+<div>
+  <div>
+    <ul
+      role="tablist"
+    >
+      <li
+        aria-controls="Primeratab_panel"
+        aria-selected="true"
+        id="Primeratab_tab"
+        role="tab"
+        tabindex="0"
+      >
+        Primera tab
+      </li>
+      <li
+        aria-controls="Segundatab(noseleccionada)_panel"
+        aria-selected="false"
+        id="Segundatab(noseleccionada)_tab"
+        role="tab"
+        tabindex="-1"
+      >
+        Segunda tab (no seleccionada)
+      </li>
+    </ul>
+    <div
+      aria-labelledby="Primeratab_tab"
+      id="Primeratab_panel"
+      role="tabpanel"
+    >
+      Contenido de la primera tab
+    </div>
+    <div
+      aria-labelledby="Segundatab(noseleccionada)_tab"
+      hidden=""
+      id="Segundatab(noseleccionada)_panel"
+      role="tabpanel"
+    >
+      Contenido de la segunda tab
+    </div>
+  </div>
+</div>
+`;

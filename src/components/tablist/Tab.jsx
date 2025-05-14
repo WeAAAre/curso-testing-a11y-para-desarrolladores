@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
-export const Tab = ({ ref, targetRef, _selected, children, ...rest }) => {
-  const initializeAria = ({ tab, tabPanel }) => {
-    tab.setAttribute('aria-controls', tabPanel.id);
+export const Tab = ({ id, targetId, _selected, children, ...rest }) => {
+  const ref = useRef();
+  const initializeAria = ({ tab, tabPanelId }) => {
+    tab.setAttribute('aria-controls', tabPanelId);
     tab.setAttribute('aria-selected', _selected);
   };
 
   useEffect(() => {
-    if (!targetRef.current || !ref.current) return;
+    if (!ref.current) return;
 
-    initializeAria({ tab: ref.current, tabPanel: targetRef.current });
-  }, [targetRef.current, ref.current, _selected]);
+    initializeAria({ tab: ref.current, tabPanelId: targetId });
+  }, [ref.current, _selected]);
 
   return (
-    <li ref={ref} role="tab" tabIndex={_selected ? 0 : -1} {...rest}>
+    <li ref={ref} id={id} role="tab" tabIndex={_selected ? 0 : -1} {...rest}>
       {children}
     </li>
   );
