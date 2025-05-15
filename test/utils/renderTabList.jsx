@@ -10,16 +10,16 @@ import { TabList, Tab, TabPanel } from '../../src/components/tablist';
 /**
  * Renders a TabList with given tabs.
  *
- * @param {{ tabs: TabData[] }} props - The props object.
- * @returns {Promise<import('@testing-library/react').RenderResult>} The render result.
+ * @param {{ tabs: TabData[], label: string }} props - Object containing the tablist label and the tabs.
+ * @returns {import('@testing-library/react').RenderResult} The render result from testing library.
  */
-export const renderTabList = ({ tabs = [] }) => {
-  return render(<TestTabList tabs={tabs} />);
+export const renderTabList = (props) => {
+  return render(<TestTabList {...props} />);
 };
 
-const TestTabList = ({ tabs }) => {
+const TestTabList = ({ tabs, label }) => {
   return (
-    <TabList>
+    <TabList label={label}>
       {tabs.map(({ name }) => {
         const idBase = `${name.replaceAll(' ', '')}`;
         return (

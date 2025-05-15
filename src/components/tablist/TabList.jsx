@@ -4,7 +4,7 @@ import { TabPanel } from './TabPanel';
 // eslint-disable-next-line no-unused-vars
 import tablistStyles from './tablist.module.css';
 
-export const TabList = ({ children }) => {
+export const TabList = ({ label, children }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const childrenArray = Children.toArray(children);
   const tabs = [];
@@ -50,7 +50,7 @@ export const TabList = ({ children }) => {
   };
   return (
     <div>
-      <ul role="tablist" onKeyDown={handleKeyDown}>
+      <ul role="tablist" aria-label={label} onKeyDown={handleKeyDown}>
         {tabs.map((tab, index) =>
           cloneElement(tab, {
             onClick: () => setSelectedIndex(index),

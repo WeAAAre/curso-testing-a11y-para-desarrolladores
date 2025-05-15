@@ -4,7 +4,7 @@ import { TabList, TabPanel, Tab } from './index';
 const meta = {
   component: () => {
     return (
-      <TabList>
+      <TabList label={'tab story'}>
         <Tab id="tab_1" targetId={'tabpanel_1'}>
           Tab 1
         </Tab>
