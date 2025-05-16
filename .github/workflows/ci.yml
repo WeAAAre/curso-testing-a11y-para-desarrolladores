@@ -23,10 +23,10 @@ jobs:
       - name: Install dependencies 📦
         run: npm ci
 
-      - name: Format (prettier)
+      - name: Format (prettier) 👨🏻‍🎨
         run: npm run prettier -- --check
 
-      - name: Lint (ESLint)
+      - name: Lint (ESLint) 🔦
         run: npm run lint
 
       - name: Run tests testing-library 🧪
@@ -35,11 +35,11 @@ jobs:
       - name: Install Playwright dependencies
         run: npx playwright install --with-deps
 
-      - name: 🧪 Run Playwright component tests
+      - name: Run Playwright tests 🧪
         run: npm run test:playwright
 
-      - name: 📚 Build Storybook
+      - name: Build Storybook 📚
         run: npm run build-storybook
 
-      - name: 🧪 Run Storybook a11y tests
+      - name: Run Storybook a11y tests 🧪
         run: npm run test:storybook
