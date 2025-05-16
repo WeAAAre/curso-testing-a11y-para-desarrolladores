@@ -46,18 +46,18 @@ jobs:
       - name: Publish testing-library results
         uses: dorny/test-reporter@v1
         with:
-          name: Vitest Tests
+          name: Testing library Tests
           path: test-testing-library-report/results.xml
-          reporter: junit
+          reporter: junit-xml
       - name: Publish Playwright results
         uses: dorny/test-reporter@v1
         with:
           name: Playwright Tests
           path: test-playwright-report/results.xml
-          reporter: junit
+          reporter: junit-xml
       - name: Publish Storybook tests
         uses: dorny/test-reporter@v1
         with:
           name: Storybook Tests
           path: test-storybook-report/results.xml
-          reporter: junit
+          reporter: junit-xml
