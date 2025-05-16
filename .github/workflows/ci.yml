@@ -44,20 +44,20 @@ jobs:
         run: npm run test:storybook
 
       - name: Publish testing-library results
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         with:
           name: Testing library Tests
           path: test-testing-library-report/results.xml
-          reporter: junit-xml
+          reporter: jest-junit
       - name: Publish Playwright results
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         with:
           name: Playwright Tests
           path: test-playwright-report/results.xml
-          reporter: junit-xml
+          reporter: jest-junit
       - name: Publish Storybook tests
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v2
         with:
           name: Storybook Tests
           path: test-storybook-report/results.xml
-          reporter: junit-xml
+          reporter: jest-junit
