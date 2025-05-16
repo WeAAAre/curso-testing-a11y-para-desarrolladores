@@ -30,8 +30,7 @@ test.describe('TabList', () => {
         const tab = locator.getByRole('tab').first();
         const tabPanel = locator.getByRole('tabpanel');
 
-        await tabPanel.focus();
-        await locator.page().keyboard.press('Shift+Tab');
+        await tabPanel.press('Shift+Tab');
 
         expect(tab).toBeFocused();
       });
@@ -39,7 +38,6 @@ test.describe('TabList', () => {
       test('When the tab list contains the focus, moves focus to the next element in the page tab sequence outside the tablist, which is the tabpanel unless the first element containing meaningful content inside the tabpanel is focusable.', async () => {
         const tab = locator.getByRole('tab').first();
         const tabPanel = locator.getByRole('tabpanel').first();
-        await tab.focus();
 
         await tab.press('Tab');
 
@@ -70,8 +68,7 @@ test.describe('TabList', () => {
           .all();
 
         // When focus is on first tab
-        await tabs[0].focus();
-        await tabList.press('ArrowLeft');
+        await tabs[0].press('ArrowLeft');
 
         await expect(tabs[tabs.length - 1]).toBeFocused();
         await expect(tabPanels[tabs.length - 1]).toBeVisible();
@@ -90,7 +87,6 @@ test.describe('TabList', () => {
           .all();
 
         // When focus is not on last tab
-        await tabs[tabs.length - 2].focus();
         await tabs[tabs.length - 2].press('ArrowRight');
 
         await expect(tabs[tabs.length - 1]).toBeFocused();
