@@ -4,6 +4,9 @@ const meta = {
   component: Slider,
   args: {
     name: 'Volumen',
+    min: 0,
+    max: 100,
+    step: 1,
   },
 };
 
