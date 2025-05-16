@@ -8,9 +8,19 @@ import prettierConfig from "eslint-config-prettier";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  {
+    ignores: [
+      'node_modules/',
+      '**/.cache/',
+      'storybook-static/',
+      'playwright-report/',
+      'test-results/',
+      'dist/',
+    ],
+  },
   js.configs.recommended,
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: ['./src/**/*.{js,jsx}', './test/**/*.{js,jsx}'],
     languageOptions: {
       parserOptions: {
         ecmaVersion: 'latest',

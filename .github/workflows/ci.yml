@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo 🧾
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Install dependencies 📦
+        run: npm ci
+
+      - name: Format (prettier) 👨🏻‍🎨
+        run: npm run prettier -- --check
+      - name: Lint (ESLint) 🔦
+        run: npm run lint
+
+      - name: Run tests testing-library 🧪
+        run: npm run test:testing-library
+
+      - name: Install Playwright dependencies
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests 🧪
+        run: npm run test:playwright
+
+      - name: Build Storybook 📚
+        run: npm run build-storybook
+      - name: Start Storybook
+        run: npm run storybook &
+      - name: Wait for Storybook to be ready
+        run: npx wait-on http://localhost:6006
+      - name: Run Storybook a11y tests 🧪
+        run: npm run test:storybook
+
+      - name: Publish testing-library results
+        uses: dorny/test-reporter@v2
+        with:
+          name: Testing library Tests
+          badge-title: Testing library Tests
+          path: test-testing-library-report/results.xml
+          reporter: jest-junit
+      - name: Publish Playwright results
+        uses: dorny/test-reporter@v2
+        with:
+          name: Playwright Tests
+          badge-title: Playwright Tests
+          path: test-playwright-report/results.xml
+          reporter: jest-junit
+      - name: Publish Storybook tests
+        uses: dorny/test-reporter@v2
+        with:
+          name: Storybook Tests
+          badge-title: Storybook Tests
+          path: test-storybook-report/results.xml
+          reporter: jest-junit

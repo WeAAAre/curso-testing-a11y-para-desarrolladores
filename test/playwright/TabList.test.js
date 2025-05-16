@@ -31,7 +31,6 @@ test.describe('TabList', () => {
         const tabPanel = locator.getByRole('tabpanel');
 
         await tabPanel.focus();
-        await locator.focus(tabPanel);
         await locator.page().keyboard.press('Shift+Tab');
 
         expect(tab).toBeFocused();
