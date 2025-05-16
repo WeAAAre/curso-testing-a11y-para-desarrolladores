@@ -6,3 +6,4 @@ tsconfig.json
 **/dist
 **/out
 .next
+**/.cache/*
