@@ -10,6 +10,6 @@ export default defineConfig({
     setupFiles: 'test/testing-library/vitest.setup.js',
     passWithNoTests: true,
     reporters: ['default', 'junit'],
-    outputFile: 'test-testing-library-report/results.xml',
+    outputFile: './reports/testing-library.xml',
   }
 })

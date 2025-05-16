@@ -25,10 +25,7 @@ dist-ssr
 
 *storybook.log
 storybook-static/
-/test-results/
-/test-playwright-report/
-/test-storybook-report/
-/test-testing-library-report/
+/reports
 
 # Playwright
 /blob-report/
