@@ -8,6 +8,8 @@ export default defineConfig({
     include: ['./test/testing-library/**/*.test.jsx', './test/testing-library/**/*.test.js'],
     environment: 'happy-dom',
     setupFiles: 'test/testing-library/vitest.setup.js',
-    passWithNoTests: true
+    passWithNoTests: true,
+    reporters: ['default', 'junit'],
+    outputFile: 'test-testing-library-report/results.xml',
   }
 })
