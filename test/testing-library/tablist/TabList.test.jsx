@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
-import { renderTabList } from '../../utils/renderTabList';
+import { renderTabList } from './utils/renderTabList';
 
 describe('TabList', () => {
   const tabs = [

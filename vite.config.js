@@ -5,7 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   test: {
+    include: ['./test/testing-library/**/*.test.jsx', './test/testing-library/**/*.test.js'],
     environment: 'happy-dom',
-    setupFiles: 'test/vitest.setup.js'
+    setupFiles: 'test/testing-library/vitest.setup.js',
+    passWithNoTests: true
   }
 })

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { focusable } from 'tabbable';
 
-export const TabPanel = ({ id, originId, _selected, children, ...rest }) => {
+export const TabPanel = ({ id, originId, children, ...restProps }) => {
+  const { _selected, ...rest } = restProps;
   const ref = useRef();
 
   const initializeAria = ({ tabId, tabPanel }) => {
@@ -10,7 +12,12 @@ export const TabPanel = ({ id, originId, _selected, children, ...rest }) => {
   useEffect(() => {
     if (!ref.current) return;
 
-    initializeAria({ tabId: originId, tabPanel: ref.current });
+    initializeAria({
+      tabId: originId,
+      tabPanel: ref.current,
+    });
+    if (focusable(ref.current).length === 0)
+      ref.current.setAttribute('tabindex', 0);
   }, [ref.current, _selected]);
 
   return (

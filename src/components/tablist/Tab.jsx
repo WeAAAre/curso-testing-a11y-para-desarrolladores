@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
-export const Tab = ({ id, targetId, _selected, children, ...rest }) => {
+export const Tab = ({ id, targetId, children, ...restProps }) => {
+  const { _selected, ...rest } = restProps;
   const ref = useRef();
   const initializeAria = ({ tab, tabPanelId }) => {
     tab.setAttribute('aria-controls', tabPanelId);
@@ -10,7 +11,10 @@ export const Tab = ({ id, targetId, _selected, children, ...rest }) => {
   useEffect(() => {
     if (!ref.current) return;
 
-    initializeAria({ tab: ref.current, tabPanelId: targetId });
+    initializeAria({
+      tab: ref.current,
+      tabPanelId: targetId,
+    });
   }, [ref.current, _selected]);
 
   return (
