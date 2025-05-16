@@ -13,19 +13,16 @@ jobs:
     steps:
       - name: Checkout repo 🧾
         uses: actions/checkout@v4
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'npm'
-
       - name: Install dependencies 📦
         run: npm ci
 
       - name: Format (prettier) 👨🏻‍🎨
         run: npm run prettier -- --check
-
       - name: Lint (ESLint) 🔦
         run: npm run lint
 
@@ -34,12 +31,14 @@ jobs:
 
       - name: Install Playwright dependencies
         run: npx playwright install --with-deps
-
       - name: Run Playwright tests 🧪
         run: npm run test:playwright
 
       - name: Build Storybook 📚
         run: npm run build-storybook
-
+      - name: Start Storybook
+        run: npm run storybook &
+      - name: Wait for Storybook to be ready
+        run: npx wait-on http://localhost:6006
       - name: Run Storybook a11y tests 🧪
         run: npm run test:storybook
