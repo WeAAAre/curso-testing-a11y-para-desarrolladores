@@ -29,6 +29,7 @@ https://www.magentaa11y.com/web/
 
 voiceOverTest.describe('TabList', () => {
   voiceOverTest.beforeEach(async ({ page, voiceOver }) => {
+    voiceOverTest.use({ locale: 'es' });
     await page.goto(
       './iframe.html?args=&globals=&id=components-tablist--primary&viewMode=story',
       {
