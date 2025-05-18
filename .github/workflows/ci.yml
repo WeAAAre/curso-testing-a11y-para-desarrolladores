@@ -83,7 +83,7 @@ jobs:
       - name: Install Browser
         run: npx playwright install chromium
       - name: Enable VoiceOver Automation
-        uses: guidepup/setup-action@v0
+        uses: guidepup/setup-action@0.17.2
 
       - name: Run voiceover tests 🧪
         run: npm run test:screenreader:voiceover
