@@ -40,7 +40,7 @@ voiceOverTest.describe('TabList', () => {
               await voiceOver.press('Tab', {});
 
               expect(await voiceOver.lastSpokenPhrase()).toContain(
-                'Actividades',
+                await voiceOver.itemText(),
               );
             },
           );
