@@ -9,7 +9,7 @@ const VOICEOVER_RESERVED_ES = {
 const VOICEOVER_RESERVED_EN = {
   SELECTED: 'selected',
   TAB: 'tab',
-  TABPANEL: 'tabpanel',
+  TABPANEL: 'tab panel',
 };
 
 export const VOICEOVER_RESERVED = process.env.VOICEOVER_LANG.includes('es')
