@@ -1,16 +1,4 @@
-// import { voiceOver } from '@guidepup/guidepup';
-
-// (async () => {
-//   // Start VoiceOver.
-//   await voiceOver.start();
-
-//   // Move to the next item.
-//   await voiceOver.next();
-
-//   // Stop VoiceOver.
-//   await voiceOver.stop();
-// })();'
-import test, { expect } from '@playwright/test';
+import { expect } from '@playwright/test';
 import { voiceOverTest } from '@guidepup/playwright';
 
 /*
@@ -29,7 +17,6 @@ https://www.magentaa11y.com/web/
 
 voiceOverTest.describe('TabList', () => {
   voiceOverTest.beforeEach(async ({ page, voiceOver }) => {
-    test.use({ locale: 'es' });
     await page.goto(
       './iframe.html?args=&globals=&id=components-tablist--primary&viewMode=story',
       {
