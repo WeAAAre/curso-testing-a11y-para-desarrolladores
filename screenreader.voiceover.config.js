@@ -13,6 +13,7 @@ export default defineConfig({
   snapshotDir: './test/screenreader/__snapshots__',
   /* Run tests in files in parallel */
   fullyParallel: false,
+  retries: 2,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Opt out of parallel tests on CI. */

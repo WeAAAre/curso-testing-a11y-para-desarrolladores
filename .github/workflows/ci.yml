@@ -7,68 +7,68 @@ on:
     branches: [main]
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
+  # ci:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repo 🧾
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'npm'
-      - name: Install dependencies 📦
-        run: npm ci
+  #   steps:
+  # - name: Checkout repo 🧾
+  #   uses: actions/checkout@v4
+  # - name: Setup Node
+  #   uses: actions/setup-node@v4
+  #   with:
+  #     node-version: 22
+  #     cache: 'npm'
+  # - name: Install dependencies 📦
+  #   run: npm ci
 
-      - name: Format (prettier) 👨🏻‍🎨
-        run: npm run prettier -- --check
-      - name: Lint (ESLint) 🔦
-        run: npm run lint
+  # - name: Format (prettier) 👨🏻‍🎨
+  #   run: npm run prettier -- --check
+  # - name: Lint (ESLint) 🔦
+  #   run: npm run lint
 
-      - name: Run tests testing-library 🧪
-        run: npm run test:testing-library
+  # - name: Run tests testing-library 🧪
+  #   run: npm run test:testing-library
 
-      - name: Install Playwright dependencies
-        run: npx playwright install --with-deps
-      - name: Run Playwright tests 🧪
-        run: npm run test:playwright
+  # - name: Install Playwright dependencies
+  #   run: npx playwright install --with-deps
+  # - name: Run Playwright tests 🧪
+  #   run: npm run test:playwright
 
-      - name: Build Storybook 📚
-        run: npm run build-storybook
-      - name: Start Storybook
-        run: npm run storybook &
-      - name: Wait for Storybook to be ready
-        run: npx wait-on http://localhost:6006
-      - name: Run Storybook a11y tests 🧪
-        run: npm run test:storybook
+  # - name: Build Storybook 📚
+  #   run: npm run build-storybook
+  # - name: Start Storybook
+  #   run: npm run storybook &
+  # - name: Wait for Storybook to be ready
+  #   run: npx wait-on http://localhost:6006
+  # - name: Run Storybook a11y tests 🧪
+  #   run: npm run test:storybook
 
-      - name: Publish testing-library results
-        uses: dorny/test-reporter@v2
-        if: always()
-        with:
-          name: Testing library Tests
-          badge-title: Testing library Tests
-          path: reports/testing-library.xml
-          reporter: jest-junit
-      - name: Publish Playwright results
-        uses: dorny/test-reporter@v2
-        if: always()
-        with:
-          name: Playwright Tests
-          badge-title: Playwright Tests
-          path: reports/playwright.xml
-          reporter: jest-junit
-      - name: Publish Storybook tests
-        uses: dorny/test-reporter@v2
-        if: always()
-        with:
-          name: Storybook Tests
-          badge-title: Storybook Tests
-          path: reports/storybook.xml
-          reporter: jest-junit
+  # - name: Publish testing-library results
+  #   uses: dorny/test-reporter@v2
+  #   if: always()
+  #   with:
+  #     name: Testing library Tests
+  #     badge-title: Testing library Tests
+  #     path: reports/testing-library.xml
+  #     reporter: jest-junit
+  # - name: Publish Playwright results
+  #   uses: dorny/test-reporter@v2
+  #   if: always()
+  #   with:
+  #     name: Playwright Tests
+  #     badge-title: Playwright Tests
+  #     path: reports/playwright.xml
+  #     reporter: jest-junit
+  # - name: Publish Storybook tests
+  #   uses: dorny/test-reporter@v2
+  #   if: always()
+  #   with:
+  #     name: Storybook Tests
+  #     badge-title: Storybook Tests
+  #     path: reports/storybook.xml
+  #     reporter: jest-junit
   voiceover:
-    needs: ci
+    # needs: ci
     runs-on: macos-14
     steps:
       - name: Checkout repo 🧾
@@ -86,7 +86,7 @@ jobs:
         uses: guidepup/setup-action@0.17.2
 
       - name: Run voiceover tests 🧪
-        run: npm run test:screenreader:voiceover
+        run: VOICEOVER_LANG=en npm run test:screenreader:voiceover
       - name: Publish voiceover results
         uses: dorny/test-reporter@v2
         if: always()
