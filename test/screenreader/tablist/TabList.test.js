@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
-import { voiceOverTest } from '@guidepup/playwright';
+import { voiceOverTest as test } from '@guidepup/playwright';
 import { VOICEOVER_RESERVED } from '../constants';
+const { beforeEach, afterEach, describe } = test;
 
 /*
 https://www.magentaa11y.com/web/
@@ -16,58 +17,77 @@ https://www.magentaa11y.com/web/
 - THEN when I use the tab key I HEAR focus moves to the activated tab panel
 */
 
-voiceOverTest.describe('TabList', () => {
-  voiceOverTest.beforeEach(async ({ page, voiceOver }) => {
+describe('TabList', () => {
+  afterEach(async ({ voiceOver }) => {
+    await voiceOver.stop();
+  });
+
+  beforeEach(async ({ page, voiceOver }) => {
     await page.goto(
       './iframe.html?args=&globals=&id=components-tablist--primary&viewMode=story',
       {
-        waitUntil: 'load',
+        waitUntil: 'domcontentloaded',
       },
     );
     await expect(page.locator('[role="tablist"]')).toBeVisible();
-    await voiceOver.next();
+    await voiceOver.interact();
   });
 
-  voiceOverTest.describe(
-    'WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver)',
-    () => {
-      voiceOverTest.describe(
-        'AND I use the tab key to move focus to a tab',
-        () => {
-          voiceOverTest(
-            'I HEAR Its label and purpose is clear',
-            async ({ voiceOver }) => {
-              await voiceOver.press('Tab', {});
+  describe('WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver)', () => {
+    describe('AND I use the tab key to move focus to a tab', () => {
+      beforeEach(async ({ page }) => {
+        await page.keyboard.press('Tab');
+      });
 
-              expect(await voiceOver.lastSpokenPhrase()).toContain(
-                await voiceOver.itemText(),
-              );
-            },
+      test('I HEAR Its label and purpose is clear', async ({ voiceOver }) => {
+        expect(await voiceOver.lastSpokenPhrase()).toContain(
+          await voiceOver.itemText(),
+        );
+      });
+
+      test('I HEAR It identifies itself as a tab', async ({ voiceOver }) => {
+        expect(await voiceOver.lastSpokenPhrase()).toContain(
+          VOICEOVER_RESERVED.TAB,
+        );
+      });
+
+      test('I HEAR It expresses its state (selected/pressed/checked)', async ({
+        voiceOver,
+      }) => {
+        expect(await voiceOver.lastSpokenPhrase()).toContain(
+          VOICEOVER_RESERVED.SELECTED,
+        );
+      });
+
+      describe('THEN when I use the tab key', () => {
+        test('I HEAR focus moves to the activated tab panel', async ({
+          voiceOver,
+        }) => {
+          await voiceOver.press('Tab');
+
+          expect(await voiceOver.lastSpokenPhrase()).toContain(
+            VOICEOVER_RESERVED.TABPANEL,
           );
+        });
+      });
 
-          voiceOverTest(
-            'I HEAR It identifies itself as a tab',
-            async ({ voiceOver }) => {
-              await voiceOver.press('Tab', {});
+      describe('IF TAB ACTIVATION IS AUTOMATIC', () => {
+        describe('when I use the left/right arrow keys', () => {
+          test('I HEAR the tab is activated', async ({ voiceOver, page }) => {
+            await voiceOver.perform(
+              voiceOver.keyboardCommands.interactWithItem,
+            );
+            await page.keyboard.press('ArrowRight');
 
-              expect(await voiceOver.lastSpokenPhrase()).toContain(
-                VOICEOVER_RESERVED.TAB,
-              );
-            },
-          );
-
-          voiceOverTest(
-            'I HEAR It expresses its state (selected/pressed/checked)',
-            async ({ voiceOver }) => {
-              await voiceOver.press('Tab', {});
-
-              expect(await voiceOver.lastSpokenPhrase()).toContain(
-                VOICEOVER_RESERVED.SELECTED,
-              );
-            },
-          );
-        },
-      );
-    },
-  );
+            const tabpanels = await page
+              .getByRole('tabpanel', {
+                includeHidden: true,
+              })
+              .all();
+            expect(tabpanels[1]).toBeVisible();
+          });
+        });
+      });
+    });
+  });
 });
