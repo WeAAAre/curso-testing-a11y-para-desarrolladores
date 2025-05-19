@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { voiceOverTest } from '@guidepup/playwright';
+import { VOICEOVER_RESERVED } from '../constants';
 
 /*
 https://www.magentaa11y.com/web/
@@ -49,7 +50,9 @@ voiceOverTest.describe('TabList', () => {
             async ({ voiceOver }) => {
               await voiceOver.press('Tab', {});
 
-              expect(await voiceOver.lastSpokenPhrase()).toContain('tabulador');
+              expect(await voiceOver.lastSpokenPhrase()).toContain(
+                VOICEOVER_RESERVED.TAB,
+              );
             },
           );
 
@@ -59,7 +62,7 @@ voiceOverTest.describe('TabList', () => {
               await voiceOver.press('Tab', {});
 
               expect(await voiceOver.lastSpokenPhrase()).toContain(
-                'seleccionado',
+                VOICEOVER_RESERVED.SELECTED,
               );
             },
           );

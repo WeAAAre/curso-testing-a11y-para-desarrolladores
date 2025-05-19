@@ -84,11 +84,9 @@ jobs:
         run: npx playwright install chromium
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.17.2
-      - name: Change locale
-        run: defaults write com.apple.VoiceOver4/default SCVoice com.apple.speech.synthesis.voice.monica
 
       - name: Run voiceover tests 🧪
-        run: npm run test:screenreader:voiceover
+        run: VOICEOVER_LANG=en npm run test:screenreader:voiceover
       - name: Publish voiceover results
         uses: dorny/test-reporter@v2
         if: always()
