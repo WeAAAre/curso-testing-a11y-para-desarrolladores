@@ -3,7 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
 import { renderTabList } from './utils/renderTabList';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { convertAxeToSarif, sarifReporter } from 'axe-sarif-converter';
+import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as fs from 'fs';
 import * as util from 'util';
 import path from 'path';
