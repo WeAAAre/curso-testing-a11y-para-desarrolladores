@@ -2,6 +2,10 @@ import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
 import { renderTabList } from './utils/renderTabList';
+import { axe, toHaveNoViolations } from 'jest-axe';
+import { convertAxeToSarif } from 'axe-sarif-converter';
+import * as fs from 'fs';
+import * as util from 'util';
 
 describe('TabList', () => {
   const tabs = [
@@ -122,5 +126,23 @@ describe('TabList', () => {
 
     // It does not apply
     it('If the tablist element is vertically oriented, it has the property aria-orientation set to vertical. The default value of aria-orientation for a tablist element is horizontal.', () => {});
+  });
+
+  describe('axe-core', () => {
+    expect.extend(toHaveNoViolations);
+
+    it('should have no violations', async () => {
+      const { container } = renderTabList({ tabs });
+
+      const axeResult = await axe(container);
+
+      const sarifResults = convertAxeToSarif(axeResult);
+      await util.promisify(fs.writeFile)(
+        './reports/tablist.sarif',
+        JSON.stringify(sarifResults),
+        { encoding: 'utf8' },
+      );
+      expect(axeResult).toHaveNoViolations();
+    });
   });
 });

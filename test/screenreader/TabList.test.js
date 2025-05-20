@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { voiceOverTest as test } from '@guidepup/playwright';
-import { VOICEOVER_RESERVED } from '../constants';
+import { VOICEOVER_RESERVED } from './constants';
 const { beforeEach, afterEach, describe } = test;
 
 /*

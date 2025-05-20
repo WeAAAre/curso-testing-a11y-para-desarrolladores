@@ -50,6 +50,11 @@ jobs:
           badge-title: Testing library Tests
           path: reports/testing-library.xml
           reporter: jest-junit
+      - name: Publish axe-core reports
+        uses: github/codeql-action/upload-sarif@v3
+        with: 
+          sarif_file: reports/tablist.sarif
+          category: axe-core
       - name: Publish Playwright results
         uses: dorny/test-reporter@v2
         if: always()
