@@ -8,9 +8,9 @@ import process from 'node:process';
 export default defineConfig({
   reportSlowTests: null,
   timeout: 3 * 60 * 1000,
-  testDir: './test/screenreader',
+  testDir: './test/screenreader/voiceover',
   /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
-  snapshotDir: './test/screenreader/__snapshots__',
+  snapshotDir: './test/screenreader/voiceover/__snapshots__',
   /* Run tests in files in parallel */
   fullyParallel: false,
   retries: process.env.CI ? 2 : 0,
