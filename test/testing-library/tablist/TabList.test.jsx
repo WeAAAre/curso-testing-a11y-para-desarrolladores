@@ -136,7 +136,7 @@ describe('TabList', () => {
       const { container } = renderTabList({ tabs });
 
       const axeResult = await axe(container, {
-        reporter: 'no-passes'
+        reporter: 'no-passes',
       });
       axeResult.url = `file://${path.resolve(
         './src/components/tablist/TabList.jsx',

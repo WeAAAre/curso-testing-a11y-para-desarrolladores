@@ -1,7 +1,6 @@
 import React, { Children, cloneElement, isValidElement, useState } from 'react';
 import { Tab } from './Tab';
 import { TabPanel } from './TabPanel';
-// eslint-disable-next-line no-unused-vars
 import tablistStyles from './tablist.module.css';
 
 export const TabList = ({ label, children }) => {
@@ -49,7 +48,7 @@ export const TabList = ({ label, children }) => {
     event.preventDefault();
   };
   return (
-    <div>
+    <div className={tablistStyles.wrapper}>
       <ul role="tablist" aria-label={label} onKeyDown={handleKeyDown}>
         {tabs.map((tab, index) =>
           cloneElement(tab, {
