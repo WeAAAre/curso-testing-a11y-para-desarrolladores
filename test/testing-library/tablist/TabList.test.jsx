@@ -140,19 +140,6 @@ describe('TabList', () => {
         './src/components/tablist/TabList.jsx',
       )}`;
       const sarifResults = convertAxeToSarif(axeResult);
-      sarifResults.runs.forEach(run => {
-        run.results.forEach(result => {
-          if (result.locations.length > 0) return
-          result.locations.push({
-           physicalLocation: {
-            artifactLocation: {
-              uri: axeResult.url,
-              index: 0
-            }
-           } 
-          })
-        })
-      })
       await util.promisify(fs.writeFile)(
         './reports/tablist.sarif',
         JSON.stringify(sarifResults),
