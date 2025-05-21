@@ -42,6 +42,9 @@ jobs:
       - name: Run Storybook a11y tests 🧪
         run: npm run test:storybook
 
+      - name: Run virtual screen reader tests 🧪
+        run: npm run test:screenreader:virtual
+
       - name: Publish testing-library results
         uses: dorny/test-reporter@v2
         if: always()
@@ -70,6 +73,14 @@ jobs:
           name: Storybook Tests
           badge-title: Storybook Tests
           path: reports/storybook.xml
+          reporter: jest-junit
+      - name: Publish virtual screenreader tests
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Virtual screenreader Tests
+          badge-title: Virtual screenreader Tests
+          path: reports/virtual-screenreader.xml
           reporter: jest-junit
   voiceover:
     needs: ci
