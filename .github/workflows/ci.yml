@@ -45,6 +45,16 @@ jobs:
       - name: Run virtual screen reader tests 🧪
         run: npm run test:screenreader:virtual
 
+      - name: Merge SARIF files
+        run: |
+          jq -s '{ "$schema": "https://json.schemastore.org/sarif-2.1.0", "version": "2.1.0", "runs": map(.runs) | add }'  reports/button.sarif  reports/tablist.sarif reports/link.sarif > merged.sarif
+
+      - name: Publish axe-core reports
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: merged.sarif
+          category: axe-core
+
       - name: Publish testing-library results
         uses: dorny/test-reporter@v2
         if: always()
@@ -53,11 +63,6 @@ jobs:
           badge-title: Testing library Tests
           path: reports/testing-library.xml
           reporter: jest-junit
-      - name: Publish axe-core reports
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: reports/tablist.sarif
-          category: axe-core
       - name: Publish Playwright results
         uses: dorny/test-reporter@v2
         if: always()
