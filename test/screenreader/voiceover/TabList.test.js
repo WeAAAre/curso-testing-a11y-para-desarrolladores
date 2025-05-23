@@ -22,7 +22,7 @@ describe('TabList', () => {
     await voiceOver.stop();
   });
 
-  beforeEach(async ({ page, voiceOver }) => {
+  beforeEach(async ({ page }) => {
     await page.goto(
       './iframe.html?args=&globals=&id=components-tablist--primary&viewMode=story',
       {
@@ -30,13 +30,13 @@ describe('TabList', () => {
       },
     );
     await expect(page.locator('[role="tablist"]')).toBeVisible();
-    await voiceOver.interact();
+    await page.locator('body').focus();
   });
 
   describe('WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver)', () => {
     describe('AND I use the tab key to move focus to a tab', () => {
-      beforeEach(async ({ page }) => {
-        await page.keyboard.press('Tab');
+      beforeEach(async ({ voiceOver }) => {
+        await voiceOver.press('Tab');
       });
 
       test('I HEAR Its label and purpose is clear', async ({ voiceOver }) => {

@@ -105,11 +105,11 @@ test.describe('TabList', () => {
       // - tabs are automatically activated.
       // - no optional navigation was implemented
       // - no tabs with associated popup menus
-      // test('Space or Enter: Activates the tab if it was not activated automatically on focus.');
-      // test('Home (Optional): Moves focus to the first tab. Optionally, activates the newly focused tab (See note below).')
-      // test('End (Optional): Moves focus to the last tab. Optionally, activates the newly focused tab (See note below).')
-      // test('Shift + F10: If the tab has an associated popup menu, opens the menu.')
-      // test('Delete (Optional): If deletion is allowed, deletes (closes) the current tab element and its associated tab panel, sets focus on the tab following the tab that was closed, and optionally activates the newly focused tab. If there is not a tab that followed the tab that was deleted, e.g., the deleted tab was the right-most tab in a left-to-right horizontal tab list, sets focus on and optionally activates the tab that preceded the deleted tab. If the application allows all tabs to be deleted, and the user deletes the last remaining tab in the tab list, the application moves focus to another element that provides a logical work flow. As an alternative to Delete, or in addition to supporting Delete, the delete function is available in a context menu.')
+      test.skip('Space or Enter: Activates the tab if it was not activated automatically on focus.', () => {});
+      test.skip('Home (Optional): Moves focus to the first tab. Optionally, activates the newly focused tab (See note below).', () => {});
+      test.skip('End (Optional): Moves focus to the last tab. Optionally, activates the newly focused tab (See note below).', () => {});
+      test.skip('Shift + F10: If the tab has an associated popup menu, opens the menu.', () => {});
+      test.skip('Delete (Optional): If deletion is allowed, deletes (closes) the current tab element and its associated tab panel, sets focus on the tab following the tab that was closed, and optionally activates the newly focused tab. If there is not a tab that followed the tab that was deleted, e.g., the deleted tab was the right-most tab in a left-to-right horizontal tab list, sets focus on and optionally activates the tab that preceded the deleted tab. If the application allows all tabs to be deleted, and the user deletes the last remaining tab in the tab list, the application moves focus to another element that provides a logical work flow. As an alternative to Delete, or in addition to supporting Delete, the delete function is available in a context menu.', () => {});
     });
   });
 

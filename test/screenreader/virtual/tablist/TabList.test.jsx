@@ -6,11 +6,11 @@ import { userEvent } from '@storybook/test';
 import { screen, waitFor } from '@testing-library/react';
 
 /*
-https://www.magentaa11y.com/web/
+https://www.magentaa11y.com/checklist-web/tab-panel/
 
-2 - Desktop screenreader
+Desktop screenreader
 - WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver) AND 
-- I use the tab key to move focus to a tab
+  - I use the tab key to move focus to a tab
   - I HEAR Its label and purpose is clear
   - I HEAR It identifies itself as a tab
   - I HEAR It expresses its state (selected/pressed/checked)
