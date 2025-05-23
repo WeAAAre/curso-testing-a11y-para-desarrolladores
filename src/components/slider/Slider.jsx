@@ -1,7 +1,13 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import sliderStyles from './slider.module.css';
 
-export const Slider = ({ name, min = 0, max = 100, step = 1, startAt = 0 }) => {
+export const Slider = ({
+  name,
+  min = 0,
+  max = 100,
+  step = 1,
+  startAt = min,
+}) => {
   const rangeInputRef = useRef(null);
   const rangeInputId = useId();
   const [value, setValue] = useState(startAt);
