@@ -1,10 +1,16 @@
 import React, { useEffect, useId, useRef, useState } from 'react';
 import sliderStyles from './slider.module.css';
 
-export const Slider = ({ name, min = 0, max = 100, step = 1 }) => {
+export const Slider = ({
+  name,
+  min = 0,
+  max = 100,
+  step = 1,
+  startAt = min,
+}) => {
   const rangeInputRef = useRef(null);
   const rangeInputId = useId();
-  const [value, setValue] = useState(min);
+  const [value, setValue] = useState(startAt);
   const [isDragging, setIsDragging] = useState(false);
 
   const handleChange = (event) => {
@@ -29,7 +35,7 @@ export const Slider = ({ name, min = 0, max = 100, step = 1 }) => {
     <div className={sliderStyles['slider-root']}>
       <div className={sliderStyles['slider-header']}>
         <label htmlFor={rangeInputId}>{name}</label>
-        <div role="status">{value}</div>
+        <div aria-hidden="true">{value}</div>
       </div>
       <input
         ref={rangeInputRef}
