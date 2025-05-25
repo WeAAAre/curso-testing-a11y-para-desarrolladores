@@ -10,7 +10,8 @@
     "prettier": "prettier --write .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:testing-library": "vitest --config ./vitest.config.js"
   },
   "dependencies": {
     "react": "^19.0.0",
