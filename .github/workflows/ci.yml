@@ -48,3 +48,14 @@ jobs:
           badge-title: Playwright Tests
           path: reports/playwright.xml
           reporter: jest-junit
+
+      - name: Run virtual screen reader tests 🧪
+        run: npm run test:screenreader:virtual
+      - name: Publish virtual screenreader tests
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Virtual screenreader Tests
+          badge-title: Virtual screenreader Tests
+          path: reports/virtual-screenreader.xml
+          reporter: jest-junit

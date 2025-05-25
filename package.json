@@ -12,7 +12,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test:testing-library": "vitest --config ./vitest.config.js",
-    "test:playwright": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=playwright.xml playwright test -c playwright-ct.config.js --reporter=junit"
+    "test:playwright": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=playwright.xml playwright test -c playwright-ct.config.js --reporter=junit",
+    "test:screenreader:virtual": "vitest --config ./vitest.virtual.config.js"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@guidepup/virtual-screen-reader": "^0.32.1",
     "@playwright/experimental-ct-react": "^1.52.0",
     "@playwright/test": "^1.52.0",
     "@storybook/addon-essentials": "^8.6.12",
