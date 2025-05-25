@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test:testing-library": "vitest --config ./vitest.config.js"
+    "test:testing-library": "vitest --config ./vitest.config.js",
+    "test:playwright": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=playwright.xml playwright test -c playwright-ct.config.js --reporter=junit"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -20,6 +21,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@playwright/experimental-ct-react": "^1.52.0",
+    "@playwright/test": "^1.52.0",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/react": "^8.6.13",
     "@storybook/react-vite": "^8.6.13",
@@ -38,6 +41,7 @@
     "globals": "^16.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "playwright": "^1.52.0",
     "prettier": "3.5.3",
     "prop-types": "^15.8.1",
     "storybook": "^8.6.13",
