@@ -2,6 +2,7 @@
 import js from '@eslint/js';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
+import jsxA11Y from 'eslint-plugin-jsx-a11y'
 import globals from 'globals';
 import prettierConfig from "eslint-config-prettier";
 
@@ -39,6 +40,7 @@ export default [
     },
     plugins: {
       react,
+      'jsx-a11y': jsxA11Y,
       'react-hooks': reactHooks
     },
     rules: {
