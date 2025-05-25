@@ -35,3 +35,16 @@ jobs:
           badge-title: Testing library Tests
           path: reports/testing-library.xml
           reporter: jest-junit
+
+      - name: Install Playwright dependencies
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests 🧪
+        run: npm run test:playwright
+      - name: Publish Playwright results
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Playwright Tests
+          badge-title: Playwright Tests
+          path: reports/playwright.xml
+          reporter: jest-junit
