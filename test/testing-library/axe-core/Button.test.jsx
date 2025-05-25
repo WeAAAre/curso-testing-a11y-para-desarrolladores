@@ -6,7 +6,7 @@ import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as fs from 'fs';
 import * as util from 'util';
 import path from 'path';
-import { Button } from '../../src/components/button/Button';
+import { Button } from '../../../src/components/button/Button';
 
 describe('Button', () => {
   afterAll(async () => {

@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({ 
   test: {
     include: ['./test/testing-library/**/*.test.jsx', './test/testing-library/**/*.test.js'],
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: './test/testing-library/vitest.setup.js',
     passWithNoTests: true,
     reporters: ['default', 'junit'],

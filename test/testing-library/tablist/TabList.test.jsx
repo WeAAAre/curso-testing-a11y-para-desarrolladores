@@ -2,11 +2,6 @@ import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
 import { renderTabList } from './utils/renderTabList';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import { convertAxeToSarif } from 'axe-sarif-converter';
-import * as fs from 'fs';
-import * as util from 'util';
-import path from 'path';
 
 describe('TabList', () => {
   const tabs = [
@@ -58,7 +53,9 @@ describe('TabList', () => {
       });
 
       const tabPanelContent = screen.queryByTestId(testId);
-      expect(tabPanelContent.parentElement.role).toEqual('tabpanel');
+      expect(tabPanelContent.parentElement.getAttribute('role')).toEqual(
+        'tabpanel',
+      );
     });
 
     it('If the tab list has a visible label, the element with role tablist has aria-labelledby set to a value that refers to the labelling element.  Otherwise, the tablist element has a label provided by aria-label', () => {
@@ -127,27 +124,5 @@ describe('TabList', () => {
 
     // It does not apply
     it.skip('If the tablist element is vertically oriented, it has the property aria-orientation set to vertical. The default value of aria-orientation for a tablist element is horizontal.', () => {});
-  });
-
-  describe('axe-core', () => {
-    expect.extend(toHaveNoViolations);
-
-    it('should have no violations', async () => {
-      const { container } = renderTabList({ tabs });
-
-      const axeResult = await axe(container, {
-        reporter: 'no-passes',
-      });
-      axeResult.url = `file://${path.resolve(
-        './src/components/tablist/TabList.jsx',
-      )}`;
-      const sarifResults = convertAxeToSarif(axeResult);
-      await util.promisify(fs.writeFile)(
-        './reports/tablist.sarif',
-        JSON.stringify(sarifResults),
-        { encoding: 'utf8' },
-      );
-      // expect(axeResult).toHaveNoViolations();
-    });
   });
 });

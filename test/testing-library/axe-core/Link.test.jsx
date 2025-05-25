@@ -6,7 +6,7 @@ import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as fs from 'fs';
 import * as util from 'util';
 import path from 'path';
-import { Link } from '../../src/components/link/Link';
+import { Link } from '../../../src/components/link/Link';
 
 describe('Link', () => {
   afterAll(async () => {

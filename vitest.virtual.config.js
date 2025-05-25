@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({ 
   test: {
     include: ['./test/screenreader/virtual/**/*.test.jsx', './test/screenreader/virtual/**/*.test.js'],
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: './test/screenreader/virtual/vitest.setup.js',
     passWithNoTests: true,
     reporters: ['default', 'junit'],
