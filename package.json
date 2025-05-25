@@ -15,7 +15,8 @@
     "test:playwright": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=playwright.xml playwright test -c playwright-ct.config.js --reporter=junit",
     "test:storybook": "JEST_JUNIT_OUTPUT_DIR=reports JEST_JUNIT_OUTPUT_NAME=storybook.xml test-storybook --junit",
     "test:screenreader:virtual": "vitest --config ./vitest.virtual.config.js",
-    "test:screenreader:voiceover": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=voiceover.xml playwright test -c playwright.voiceover.config.js --reporter=junit"
+    "test:screenreader:voiceover": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=voiceover.xml playwright test -c playwright.voiceover.config.js --reporter=junit",
+    "merge:sarif": "rm reports/merged.sarif; sh -c 'jq -s \"{ version: \\\"2.1.0\\\", \\\"$schema\\\": \\\"https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json\\\", runs: map(.runs) | add }\" $(find reports -name \"*.sarif\") > reports/merged.sarif'"
   },
   "dependencies": {
     "react": "^19.0.0",
