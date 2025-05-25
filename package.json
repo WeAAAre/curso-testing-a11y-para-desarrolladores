@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test:testing-library": "vitest --config ./vitest.config.js"
+    "test:testing-library": "vitest --config ./vitest.config.js",
+    "test:playwright": "PLAYWRIGHT_JUNIT_OUTPUT_DIR=reports PLAYWRIGHT_JUNIT_OUTPUT_NAME=playwright.xml playwright test -c playwright-ct.config.js --reporter=junit"
   },
   "dependencies": {
     "react": "^19.0.0",
