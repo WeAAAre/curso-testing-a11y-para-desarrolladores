@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@guidepup/virtual-screen-reader": "^0.32.1",
     "@playwright/experimental-ct-react": "^1.52.0",
     "@playwright/test": "^1.52.0",
     "@storybook/addon-essentials": "^8.6.12",
