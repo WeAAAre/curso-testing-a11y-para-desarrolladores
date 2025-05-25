@@ -59,6 +59,14 @@ jobs:
           badge-title: Virtual screenreader Tests
           path: reports/virtual-screenreader.xml
           reporter: jest-junit
+
+      - name: Merge sarif files
+        run: npm run merge:sarif
+      - name: Upload SARIF files
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: reports/merged.sarif
+          category: axe-core
   voiceover:
     needs: ci
     runs-on: macos-14
