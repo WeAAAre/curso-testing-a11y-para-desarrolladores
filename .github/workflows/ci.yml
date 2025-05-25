@@ -59,3 +59,31 @@ jobs:
           badge-title: Virtual screenreader Tests
           path: reports/virtual-screenreader.xml
           reporter: jest-junit
+  voiceover:
+    needs: ci
+    runs-on: macos-14
+    steps:
+      - name: Checkout repo 🧾
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+      - name: Install dependencies 📦
+        run: npm ci
+      - name: Install Browser
+        run: npx playwright install chromium
+      - name: Enable VoiceOver Automation
+        uses: guidepup/setup-action@0.17.2
+
+      - name: Run voiceover tests 🧪
+        run: VOICEOVER_LANG=en npm run test:screenreader:voiceover
+      - name: Publish voiceover results
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Voiceover Tests
+          badge-title: Voiceover Tests
+          path: reports/voiceover.xml
+          reporter: jest-junit
