@@ -45,13 +45,10 @@ jobs:
       - name: Run virtual screen reader tests 🧪
         run: npm run test:screenreader:virtual
 
-      - name: Merge SARIF files
-        run: codeql github merge-results --sarif=reports/*.sarif --output=reports/merged.sarif
-
       - name: Publish axe-core reports
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: merged.sarif
+          sarif_file: reports
           category: axe-core
 
       - name: Publish testing-library results
