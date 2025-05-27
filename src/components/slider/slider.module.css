@@ -42,7 +42,6 @@
       background: var(--slider-color);
       border: 2px solid var(--white);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
       transition:
         background 0.15s ease,
         transform 0.15s ease;
@@ -60,7 +59,6 @@
       background: var(--slider-color);
       border: 2px solid var(--white);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
       transition:
         background 0.15s ease,
         transform 0.15s ease;
