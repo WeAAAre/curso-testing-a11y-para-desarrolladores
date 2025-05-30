@@ -45,6 +45,7 @@ export default [
     },
     rules: {
       ...react.configs.recommended.rules,
+      ...jsxA11Y.configs.recommended.rules,
       'react/prop-types': 'off'
     }
   },
