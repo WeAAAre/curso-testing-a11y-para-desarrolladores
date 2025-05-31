@@ -10,7 +10,8 @@
     "prettier": "prettier --write .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:testing-library": "vitest --config ./vitest.config.js"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -22,6 +23,9 @@
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/react": "^8.6.13",
     "@storybook/react-vite": "^8.6.13",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.15.18",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
