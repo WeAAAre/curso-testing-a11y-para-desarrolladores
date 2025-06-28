@@ -1,4 +1,4 @@
-# WeAAAre - Curso de testing
+# weAAAre - Curso de testing
 
 Repositorio para el curso de testing de componentes para accesibilidad en la plataforma WeAAAre.
 
@@ -69,7 +69,7 @@ Puedes ejecutar los siguientes comandos usando `npm run <script>`:
   ```
 
   ```sh
-    npm run test:storybook
+  npm run test:storybook
   ```
 
   ```sh
@@ -88,3 +88,11 @@ Puedes ejecutar los siguientes comandos usando `npm run <script>`:
 ## Licencia
 
 MIT
+
+## Contacto
+Si tienes preguntas o necesitas ayuda, puedes:
+- Abrir un issue en este repositorio o escribir un comentario en la lección del curso.
+- Contactar al equipo de weAAAre a través de hola@weaaare.com
+
+--- 
+Desarrollado con ❤️ por el equipo de weAAAre
