@@ -1,6 +1,6 @@
 # weAAAre - Curso de testing
 
-Repositorio para el curso de testing de componentes para accesibilidad en la plataforma WeAAAre.
+Repositorio para el curso de testing de componentes para accesibilidad en la plataforma weAAAre.
 
 ## Descripción
 
@@ -83,7 +83,7 @@ Puedes ejecutar los siguientes comandos usando `npm run <script>`:
 ## Recursos
 
 - [MagentaA11Y](https://www.magentaa11y.com/web/)
-- [Aria Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
+- [ARIA Patterns](https://www.w3.org/WAI/ARIA/apg/patterns/)
 
 ## Licencia
 
