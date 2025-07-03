@@ -33,7 +33,9 @@ describe('Slider', () => {
 
   describe('WHEN I use a desktop screenreader (NVDA, JAWS, VoiceOver)', () => {
     describe('AND I use the tab key to move focus to a range slider', () => {
-      beforeEach(async ({ voiceOver }) => {
+      beforeEach(async ({ voiceOver, page }) => {
+        await voiceOver.detect()
+        await page.locator('body').focus();
         await voiceOver.press('Tab');
       });
 
