@@ -22,7 +22,8 @@ describe('TabList', () => {
     await voiceOver.stop();
   });
 
-  beforeEach(async ({ page }) => {
+  beforeEach(async ({ page, voiceOver }) => {
+    await voiceOver.detect()
     await page.goto(
       './iframe.html?args=&globals=&id=components-tablist--primary&viewMode=story',
       {

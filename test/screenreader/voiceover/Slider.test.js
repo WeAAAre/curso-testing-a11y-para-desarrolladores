@@ -19,7 +19,8 @@ describe('Slider', () => {
     await voiceOver.stop();
   });
 
-  beforeEach(async ({ page }) => {
+  beforeEach(async ({ page, voiceOver }) => {
+    await voiceOver.detect()
     await page.goto(
       './iframe.html?args=&globals=&id=components-slider--primary&viewMode=story',
       {
