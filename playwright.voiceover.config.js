@@ -7,7 +7,7 @@ import process from 'node:process';
  */
 export default defineConfig({
   reportSlowTests: null,
-  timeout: 3 * 60 * 1000,
+  timeout: 2 * 60 * 1000,
   testDir: './test/screenreader/voiceover',
   /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
   snapshotDir: './test/screenreader/voiceover/__snapshots__',
@@ -17,7 +17,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     [process.env.CI ? 'github' : 'list']
