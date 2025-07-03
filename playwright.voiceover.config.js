@@ -7,7 +7,7 @@ import process from 'node:process';
  */
 export default defineConfig({
   reportSlowTests: null,
-  timeout: 3 * 60 * 1000,
+  timeout: 1 * 60 * 1000,
   testDir: './test/screenreader/voiceover',
   /* The base directory, relative to the config file, for snapshot files created with toMatchSnapshot and toHaveScreenshot. */
   snapshotDir: './test/screenreader/voiceover/__snapshots__',
